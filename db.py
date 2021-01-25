@@ -1,16 +1,16 @@
 import pickle
 
 #467316370, 465112900 477643858
-admin = [467316370]
-with open('/home/bot/bot_flower/DB/admin.pickle', 'wb') as f:
+admin = [465112900]
+with open('DB/admin.pickle', 'wb') as f:
     pickle.dump(admin,f)
-with open('/home/bot/bot_flower/DB/admin.pickle', 'rb') as f:
+with open('DB/admin.pickle', 'rb') as f:
     admin = pickle.load(f)
 
 # bouquets = {}
-# with open('/home/bot/bot_flower/DB/bouquets.pickle', 'wb') as f:
+# with open('DB/bouquets.pickle', 'wb') as f:
 #     pickle.dump(bouquets,f)
-# with open('/home/bot/bot_flower/DB/bouquets.pickle', 'rb') as f:
+# with open('DB/bouquets.pickle', 'rb') as f:
 #     bouquets = pickle.load(f)
 
 # buyer =  {}
