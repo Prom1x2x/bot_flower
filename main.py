@@ -20,6 +20,7 @@ bufer_photo = {}
 bufer_text = {}
 bufer_sum = {}
 bufer_name  = {}
+
 admin = [467316370, 673980826]
 
 #Клавиатура для админа
@@ -169,30 +170,35 @@ def send_post(message):
     key_catalog = telebot.types.InlineKeyboardButton(text='Перейти на сайт', url = 'https://florico.ru/')
 
     keyBoard_post.add(key_pay ,key_feedback, key_catalog)
+
+    keyBoard_sale = telebot.types.InlineKeyboardMarkup(True)
+    key_sale = telebot.types.InlineKeyboardButton(text='Продано', callback_data=f'''sale_{num_post}''')
+
+    keyBoard_sale.add(key_sale)
  
     count_photo = len(bufer_photo[tg_id])
     print(count_photo)
     if count_photo == 1:
         bot.send_photo(-1001440956355, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb'), bufer_text[tg_id][0])
-        bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+        message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
     elif count_photo == 2:
         with open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb') as f1, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][1]}', 'rb') as f2:
             files = [InputMediaPhoto(f1, caption = f'{bufer_text[tg_id][0]}'),InputMediaPhoto(f2)]
             bot.send_media_group(-1001440956355, files)
-            bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+            message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
     elif count_photo == 3:
         with open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb') as f1, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][1]}', 'rb') as f2,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][2]}', 'rb') as f3:
             files = [InputMediaPhoto(f1, caption = f'{bufer_text[tg_id][0]}'),InputMediaPhoto(f2), InputMediaPhoto(f3)]
             bot.send_media_group(-1001440956355, files)
-            bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+            message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
     elif count_photo == 4:
         with open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb') as f1, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][1]}', 'rb') as f2,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][2]}', 'rb') as f3, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][3]}', 'rb') as f4:
             files = [InputMediaPhoto(f1, caption = f'{bufer_text[tg_id][0]}'),InputMediaPhoto(f2),\
                      InputMediaPhoto(f3), InputMediaPhoto(f4)]
             bot.send_media_group(-1001440956355, files)
-            bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+            message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
     elif count_photo == 5:
         with open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb') as f1, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][1]}', 'rb') as f2,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][2]}', 'rb') as f3, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][3]}', 'rb') as f4,\
@@ -200,7 +206,8 @@ def send_post(message):
             files = [InputMediaPhoto(f1, caption = f'{bufer_text[tg_id][0]}'),InputMediaPhoto(f2),\
                      InputMediaPhoto(f3), InputMediaPhoto(f4), InputMediaPhoto(f5)]
             bot.send_media_group(-1001440956355, files)
-            bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+            message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
+        
     elif count_photo == 6:
         with open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb') as f1, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][1]}', 'rb') as f2,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][2]}', 'rb') as f3, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][3]}', 'rb') as f4,\
@@ -209,7 +216,8 @@ def send_post(message):
                      InputMediaPhoto(f3), InputMediaPhoto(f4), InputMediaPhoto(f5),\
                      InputMediaPhoto(f6)]
             bot.send_media_group(-1001440956355, files)
-            bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+            message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
+        
     elif count_photo == 7:
         with open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb') as f1, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][1]}', 'rb') as f2,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][2]}', 'rb') as f3, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][3]}', 'rb') as f4,\
@@ -219,7 +227,8 @@ def send_post(message):
                      InputMediaPhoto(f3), InputMediaPhoto(f4), InputMediaPhoto(f5),\
                      InputMediaPhoto(f6), InputMediaPhoto(f7)]
             bot.send_media_group(-1001440956355, files)
-            bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+            message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
+        
     elif count_photo == 8:
         with open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb') as f1, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][1]}', 'rb') as f2,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][2]}', 'rb') as f3, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][3]}', 'rb') as f4,\
@@ -229,7 +238,8 @@ def send_post(message):
                      InputMediaPhoto(f3), InputMediaPhoto(f4), InputMediaPhoto(f5),\
                      InputMediaPhoto(f6), InputMediaPhoto(f7), InputMediaPhoto(f8)]
             bot.send_media_group(-1001440956355, files)
-            bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+            message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
+       
     elif count_photo == 9:
         with open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb') as f1, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][1]}', 'rb') as f2,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][2]}', 'rb') as f3, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][3]}', 'rb') as f4,\
@@ -241,19 +251,34 @@ def send_post(message):
                      InputMediaPhoto(f6), InputMediaPhoto(f7), InputMediaPhoto(f8),\
                      InputMediaPhoto(f9)]
             bot.send_media_group(-1001440956355, files)
-            bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+            message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
+        
     elif count_photo == 10:
         with open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][0]}', 'rb') as f1, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][1]}', 'rb') as f2,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][2]}', 'rb') as f3, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][3]}', 'rb') as f4,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][4]}', 'rb') as f5, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][5]}', 'rb') as f6,\
         open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][6]}', 'rb') as f7, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][7]}', 'rb') as f8,\
-        open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][8]}', 'rb') as f7, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][9]}', 'rb') as f10:
+        open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][8]}', 'rb') as f9, open(f'/home/bot/bot_flower/photos_{message.from_user.id}/{bufer_photo[tg_id][9]}', 'rb') as f10:
             files = [InputMediaPhoto(f1, caption = f'{bufer_text[tg_id][0]}'),InputMediaPhoto(f2),\
                      InputMediaPhoto(f3), InputMediaPhoto(f4), InputMediaPhoto(f5),\
                      InputMediaPhoto(f6), InputMediaPhoto(f7), InputMediaPhoto(f8),\
                      InputMediaPhoto(f9), InputMediaPhoto(f10)]
             bot.send_media_group(-1001440956355, files)
-            bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post)
+            message_id = bot.send_message(-1001440956355, '''Вы можете приобрести букет, перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post).message_id
+        
+    for administrator in admin:
+        message_admin = bot.send_message(administrator, f'''Если все товары "{bouquets[num_post][1]}" проданы, нажмите кнопку "Продано", чтобы изменить статус поста''', reply_markup = keyBoard_sale).message_id
+
+    with open('/home/bot/bot_flower/DB/bouquets.pickle', 'rb') as f:
+        bouquets = pickle.load(f)
+    
+    bouquets[num_post].append(message_id)
+    bouquets[num_post].append(message_admin)
+    with open('/home/bot/bot_flower/DB/bouquets.pickle', 'wb') as f:
+        pickle.dump(bouquets,f)
+    print(bouquets)
+
+
     shutil.rmtree(f'/home/bot/bot_flower/photos_{message.from_user.id}/')
     bufer_photo.pop(tg_id)
     bufer_text.pop(tg_id)
@@ -419,7 +444,25 @@ def checkout(query):
 def getMessage():
         bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
         return "ok", 200
-           
+
+
+@bot.callback_query_handler(func=lambda call: True)
+def sale(call):
+    with open('/home/bot/bot_flower/DB/bouquets.pickle', 'rb') as f:
+        bouquets = pickle.load(f)
+
+    keyBoard_post_sale = telebot.types.InlineKeyboardMarkup(True)
+    key_feedback = telebot.types.InlineKeyboardButton(text='Обратная связь', url = 'https://t.me/floricom')
+    key_catalog = telebot.types.InlineKeyboardButton(text='Перейти на сайт', url = 'https://florico.ru/')
+
+    keyBoard_post_sale.add(key_feedback, key_catalog)
+
+    if call.data.split('_')[0] == 'sale':
+        print(call.data)
+        bot.edit_message_text(chat_id = -1001440956355, message_id = bouquets[call.data.split('_')[1]][2], text=f'''Данный товар продан, но наши флористы могут собрать что-то похожее. Вы можете перейти на сайт или связаться с продавцом''', reply_markup = keyBoard_post_sale)
+        bot.edit_message_text(chat_id = call.from_user.id, message_id = bouquets[call.data.split('_')[1]][3], text=f'''Все товары "{bouquets[call.data.split('_')[1]][1]}" проданы!''', reply_markup = None)
+
+
 @bot.message_handler(commands = ['start'])
 def start(message):
     tg_id = message.from_user.id
@@ -460,6 +503,8 @@ def get_text(message):
         buyer = pickle.load(f)
 
     if message.text == 'Добавить пост':
+        if os.path.exists(f'/home/bot/bot_flower/photos_{message.from_user.id}/'):
+           shutil.rmtree(f'/home/bot/bot_flower/photos_{message.from_user.id}/') 
         os.mkdir(f'/home/bot/bot_flower/photos_{message.from_user.id}/')
         bufer_photo[tg_id] = []
         append_photo = bot.send_message(message.from_user.id, '''Добавьте фото для поста''', reply_markup = None)
@@ -517,4 +562,5 @@ def get_text(message):
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1',
-        port=7771)
+         port=7771)
+    # bot.polling(none_stop = True, interval = 0)
